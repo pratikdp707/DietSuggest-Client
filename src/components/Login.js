@@ -13,7 +13,7 @@ export const Login = () => {
     });
     const history = useHistory();
     const clientId = process.env.REACT_APP_GOOGLE_CLIENT
-    const baseURL = "http://localhost:4000/api"
+    const baseURL = "https://dietsuggest-app.herokuapp.com/api"
     const { email, password1, textChange } = formData;
     const handleChange = text => e => {
         setFormData({ ...formData, [text]: e.target.value });

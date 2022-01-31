@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { getCookie } from '../helpers/auth';
 import axios from 'axios';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 export const Home = (props) => {
-
-  const baseURL = "http://localhost:4000/api"
+  const history = useHistory();
+  const baseURL = "https://dietsuggest-app.herokuapp.com/api"
   useEffect(() => {
     const token = getCookie('token');
     console.log(token);
+    if(!token){
+      history.push('/login');
+    }
     axios.post(baseURL + '/user/getUser/' + token)
       .then(response => {
         console.log(response)

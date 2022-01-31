@@ -17,7 +17,7 @@ export const Register = () => {
         setFormData({ ...formData, [text]: e.target.value });
     };
 
-    const baseURL = "http://localhost:4000/api"
+    const baseURL = "https://dietsuggest-app.herokuapp.com/api"
     const handleSubmit = e => {
         e.preventDefault();
         if (name && email && password1) {

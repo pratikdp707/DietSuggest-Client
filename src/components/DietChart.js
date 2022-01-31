@@ -4,7 +4,7 @@ import { Navbar } from './Navbar';
 import { FoodCard } from './FoodCard';
 export const DietChart = (props) => {
 
-    const baseURL = "http://localhost:4000/api"
+    const baseURL = "https://dietsuggest-app.herokuapp.com/api"
     const [diet, setDiet] = useState({});
     let dietData = diet;
     let foodItems = [{

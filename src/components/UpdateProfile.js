@@ -15,7 +15,7 @@ export const UpdateProfile = (props) => {
     });
     let history = useHistory();
     const { gender, age, weight, height, activity_type, textChange } = formData;
-    const baseURL = "http://localhost:4000/api"
+    const baseURL = "https://dietsuggest-app.herokuapp.com/api"
     const handleChange = text => (e) => {
         console.log(text + " " + e.target.value)
         setFormData({ ...formData, [text]: e.target.value });
