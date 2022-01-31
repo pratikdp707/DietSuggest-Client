@@ -32,7 +32,7 @@ export const Login = () => {
                     toast.error(response.data.data);
                 } else {
                     authenticate(response ,() => {
-                        history.push('/home')
+                        history.push('/')
                     })
                 }
             })
@@ -71,7 +71,7 @@ export const Login = () => {
                             password1: '',
                             textChange: 'Submitted'
                         });
-                        history.push('/home')
+                        history.push('/')
                     })
                 }
             })
