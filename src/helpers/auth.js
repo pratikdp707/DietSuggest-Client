@@ -25,7 +25,7 @@ export const removeCookie = key => {
 
 export const authenticate = (response, next) => {
     console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
-    setCookie('token', response.data.data);
+    setCookie('token-diet', response.data.data);
     next();
 };
 

@@ -4,7 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 import { authenticate } from '../helpers/auth';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
-export const Login = () => {
+export const Login = (props) => {
 
     const [formData, setFormData] = useState({
         email: '',
@@ -48,7 +48,7 @@ export const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(baseURL)
+        // console.log(baseURL)
         if(email && password1){
             setFormData({...formData, textChange: 'Submitting'});
             axios.post(baseURL+'/user/login',{
@@ -71,7 +71,9 @@ export const Login = () => {
                             password1: '',
                             textChange: 'Submitted'
                         });
+                        props.setAuthUser(true);
                         history.push('/')
+
                     })
                 }
             })

@@ -2,31 +2,27 @@ import React, { useEffect } from 'react';
 import { Navbar } from './Navbar';
 import { getCookie } from '../helpers/auth';
 import axios from 'axios';
-import {Link, useHistory} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 export const Home = (props) => {
-  const history = useHistory();
+  // const history = useHistory();
   const baseURL = "https://dietsuggest-app.herokuapp.com/api"
+  const token = getCookie('token-diet');
+
   useEffect(() => {
-    const token = getCookie('token');
-    console.log(token);
-    if(!token){
-      history.push('/login');
-    }
     axios.post(baseURL + '/user/getUser/' + token)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         if (response.data.status === 'success') {
-          console.log(response.data.data)
+          // console.log(response.data.data)
           props.setUser(response.data.data);
         } else {
           props.setUser(null);
         }
       })
-      console.log(props.user);
+    props.setAuthUser(true);
+    // console.log(props.user);
     // console.log(props.user.bmi_parameters);
-    
-
-  });
+  }, [token, props]);
 
   return <div>
     <Navbar user={props.user} />
@@ -43,7 +39,7 @@ export const Home = (props) => {
                   Height
                 </h1>
                 <h3 className='text-xl font-semibold text-gray-100 text-center'>
-                  {props.user['height']} cm 
+                  {props.user['height']} cm
                 </h3>
               </div>
               <div className='bg-indigo-500 rounded-xl p-10' >
